@@ -1,0 +1,29 @@
+#include <sstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<string> solution(vector<string> quiz)
+{
+    vector<string> answer;
+    
+    for (const string& q : quiz)
+    {
+        stringstream ss(q);
+        
+        int X, Y, Z;
+        char op, equal;
+        
+        ss >> X >> op >> Y >> equal >> Z;
+        
+        int result = (op == '+') ? X + Y : X - Y;
+        
+        if (result == Z)
+            answer.push_back("O");
+        else
+            answer.push_back("X");
+    }
+    
+    return answer;
+}
